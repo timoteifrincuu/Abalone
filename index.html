@@ -4,38 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abalone Game</title>
-    <style>
-        .cell{
-            width: 20px;
-            height: 20px;
-            display: inline-block;
-        }
-        .white{background-color: white;}
-        .black{background-color: black;}
-        .blue{background-color: blue;}
-        .red{background-color: rgb(255, 0, 0);}
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="board"></div>
 
-    <script>
-        const board = document.getElementById('board');
-        for (let i = 0; i < tabla.length; i++) {
-            for (let j = 0; j < tabla[i].length; j++) {
-                const cell = document.createElement('div');
-                cell.classList.add('cell');
-                switch (tabla[i][j]) {
-                    case 0: cell.classList.add('blue'); break;
-                    case 1: cell.classList.add('white'); break;
-                    case 2: cell.classList.add('black'); break;
-                    case 3: cell.classList.add('red'); break;
-                }
-                board.appendChild(cell);
-            }
-            board.appendChild(document.createElement('br'));
-        }
-    </script>
-    <script src="script.js"></script>pt
+    <script src="script.js"></script>
 </body>
 </html>
