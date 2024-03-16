@@ -34,13 +34,24 @@ console.log(tabla);
 const board = document.getElementById('board');
 for (let i = 0; i < tabla.length; i++) {
     for (let j = 0; j < tabla[i].length; j++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
+        let cell;
         switch (tabla[i][j]) {
-            case 0: cell.classList.add('blue'); break;
-            case 1: cell.classList.add('white'); break;
-            case 2: cell.classList.add('black'); break;
-            case 3: cell.classList.add('red'); break;
+            case 0: 
+                cell = document.createElement('button');
+                cell.classList.add('cell', 'light-grey'); 
+                break;
+            case 1: 
+                cell = document.createElement('button');
+                cell.classList.add('cell', 'white'); 
+                break;
+            case 2: 
+                cell = document.createElement('button');
+                cell.classList.add('cell', 'black'); 
+                break;
+            case 3: 
+                cell = document.createElement('div');  
+                cell.classList.add('cell', 'dark-grey'); 
+                break;
         }
         board.appendChild(cell);
     }

@@ -3,7 +3,19 @@
     height: 20px;
     display: inline-block;
 }
-.white {background-color: white;}
-.black {background-color: black;}
-.blue {background-color: blue;}
-.red {background-color: rgb(255, 0, 0);}
+.white {
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+}
+.black {
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+}
+.light-grey {
+    background-color: rgb(255, 255, 255);
+    color: white;
+    border-radius: 50%;
+    border: none;
+}
+.dark-grey {background-color: rgb(80, 80, 80);}
