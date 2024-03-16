@@ -29,5 +29,6 @@ for(i=1;i<=9;i++)
     tabla[7][9]=2;
     tabla[7][11]=2;
 }
+console.log(tabla);
 
 
