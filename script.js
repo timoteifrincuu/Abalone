@@ -31,4 +31,18 @@ for(i=1;i<=9;i++)
 }
 console.log(tabla);
 
-
+const board = document.getElementById('board');
+for (let i = 0; i < tabla.length; i++) {
+    for (let j = 0; j < tabla[i].length; j++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        switch (tabla[i][j]) {
+            case 0: cell.classList.add('blue'); break;
+            case 1: cell.classList.add('white'); break;
+            case 2: cell.classList.add('black'); break;
+            case 3: cell.classList.add('red'); break;
+        }
+        board.appendChild(cell);
+    }
+    board.appendChild(document.createElement('br'));
+}

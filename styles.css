@@ -1,0 +1,9 @@
+.cell {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+.white {background-color: white;}
+.black {background-color: black;}
+.blue {background-color: blue;}
+.red {background-color: rgb(255, 0, 0);}
