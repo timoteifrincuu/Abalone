@@ -46,3 +46,7 @@ for (let i = 0; i < tabla.length; i++) {
     }
     board.appendChild(document.createElement('br'));
 }
+count1=0;
+count2=0;
+player=2;
+
