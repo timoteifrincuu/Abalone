@@ -1,4 +1,4 @@
-//0-spatii libere, 1-bile albe, 2-bile negre, 3-spatii interzise si spatii pierzatoare.
+//0-spatii libere, 1-bile albe, 2-bile negre, 3-spatii pierzatoare, 4-spatii interzise
 const tabla= new Array(11).fill().map(()=>new Array(19).fill(3));
 for(i=1;i<=9;i++)
 {   
@@ -6,29 +6,33 @@ for(i=1;i<=9;i++)
     {
         for(j=6-i;j<=12+i;j=j+2)
         {
+            tabla[i][j+1]=4;
             if(i<=2)
                 tabla[i][j]=1;
             else
                 tabla[i][j]=0;
         }
+        tabla[i][12+i+1]=3;
     }
     else
     {
         for(j=i-4;j<=22-i;j=j+2)
         {
+            tabla[i][j+1]=4;
             if(i>=8)
                 tabla[i][j]=2;
             else
                 tabla[i][j]=0;
         }
+        tabla[i][23-i]=3;
     }
-    tabla[3][7]=1;
-    tabla[3][9]=1;
-    tabla[3][11]=1;
-    tabla[7][7]=2;
-    tabla[7][9]=2;
-    tabla[7][11]=2;
 }
+tabla[3][7]=1;
+tabla[3][9]=1;
+tabla[3][11]=1;
+tabla[7][7]=2;
+tabla[7][9]=2;
+tabla[7][11]=2;
 let scorePlayerBlack=0;
 let scorePlayerWhite=0;
 let player=2;
@@ -80,6 +84,9 @@ for (let i = 0; i < tabla.length; i++) {
                 cell = document.createElement('div');  
                 cell.classList.add('cell', 'dark-grey'); 
                 break;
+            case 4:
+                cell = document.createElement('div');
+                cell.classList.add('cell', 'separators');
         }
         if (cell.tagName === 'BUTTON') {
             cell.addEventListener('click', function() {
