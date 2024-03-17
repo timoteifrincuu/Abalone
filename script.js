@@ -29,7 +29,6 @@ for(i=1;i<=9;i++)
     tabla[7][9]=2;
     tabla[7][11]=2;
 }
-console.log(tabla);
 let scorePlayerBlack=0;
 let scorePlayerWhite=0;
 let player=2;
@@ -93,7 +92,7 @@ for (let i = 0; i < tabla.length; i++) {
                         actiuni++;
                     }
                 }
-                if(actiuni==1)
+                else if(actiuni==1)
                 {
                     if(tabla[i][j]==0)
                     {
@@ -121,11 +120,31 @@ for (let i = 0; i < tabla.length; i++) {
                             j2=j;
                             actiuni++;
                             lungime=2;
-                            if(i==i1)
+                            if(i1>=i2)
+                            {
+                                imax=i1;
+                                imin=i2;
+                            }
+                            else
+                            {
+                                imax=i2;
+                                imin=i1;
+                            }
+                            if(j1>=j2)
+                            {
+                                jmax=j1;
+                                jmin=j2;
+                            }
+                            else
+                            {
+                                jmax=j2;
+                                jmin=j1;
+                            }
+                            if(imin==imax)
                             {
                                 type=1;
                             }
-                            else if((i=i1-1&&j==j1+1)||(i==i1+1&&j==j1-1))
+                            else if((i1==imin&&j1==jmax)||(i2==imin&&j2==jmax))
                             {
                                 type=2;
                             }
@@ -142,11 +161,31 @@ for (let i = 0; i < tabla.length; i++) {
                             j2=(j1+j3)/2;
                             lungime=3;
                             actiuni++;
+                            if(i1>=i3)
+                            {
+                                imax=i1;
+                                imin=i3;
+                            }
+                            else
+                            {
+                                imax=i3;
+                                imin=i1;
+                            }
+                            if(j1>=j3)
+                            {
+                                jmax=j1;
+                                jmin=j3;
+                            }
+                            else
+                            {
+                                jmax=j3;
+                                jmin=j1;
+                            }
                             if(i==i1)
                             {
                                 type=1;
                             }
-                            else if((i=i1-1&&j==j1+1)||(i==i1+1&&j==j1-1))
+                            else if((i1==imin&&j1==jmax)||(i3==imin&&j3==jmax))
                             {
                                 type=2;
                             }
@@ -161,54 +200,8 @@ for (let i = 0; i < tabla.length; i++) {
                         actiuni=0;
                     }   
                 }
-                if(actiuni==2)
+                else if(actiuni==2)
                 {
-                    if(lungime==2)
-                    {
-                        if(i1>=i2)
-                        {
-                            imax=i1;
-                            imin=i2;
-                        }
-                        else
-                        {
-                            imax=i2;
-                            imin=i1;
-                        }
-                        if(j1>=j2)
-                        {
-                            jmax=j1;
-                            jmin=j2;
-                        }
-                        else
-                        {
-                            jmax=j2;
-                            jmin=j1;
-                        }
-                    }
-                    else
-                    {
-                        if(i1>=i3)
-                        {
-                            imax=i1;
-                            imin=i3;
-                        }
-                        else
-                        {
-                            imax=i3;
-                            imin=i1;
-                        }
-                        if(j1>=j3)
-                        {
-                            jmax=j1;
-                            jmin=j3;
-                        }
-                        else
-                        {
-                            jmax=j3;
-                            jmin=j1;
-                        }
-                    }
                     if(type==1)
                     {
                         if(i==imax-1)
@@ -587,6 +580,587 @@ for (let i = 0; i < tabla.length; i++) {
                                         playerWaiting=aux;
                                     }
                                 }
+                            }
+                            else if(j==jmax-1)
+                            {
+                                if(lungime==2)
+                                {
+                                    if((tabla[i1-1][j1-1]==0)&&(tabla[i2-1][j2-1]==0))
+                                    {
+                                        tabla[i1-1][j1-1]=player;
+                                        tabla[i2-1][j2-1]=player;
+                                        updateCellColor(i1-1, j1-1);
+                                        updateCellColor(i2-1, j2-1);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                                if(lungime==3)
+                                {
+                                    if((tabla[i1-1][j1-1]==0)&&(tabla[i2-1][j2-1]==0)&&(tabla[i3-1][j3-1]==0))
+                                    {
+                                        tabla[i1-1][j1-1]=player;
+                                        tabla[i2-1][j2-1]=player;
+                                        tabla[i3-1][j3-1]=player;
+                                        updateCellColor(i1-1, j1-1);
+                                        updateCellColor(i2-1, j2-1);
+                                        updateCellColor(i3-1,j3-1);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        tabla[i3][j3]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        updateCellColor(i3,j3);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                actiuni=0;
+                            }
+                        }
+                        else if(i==imin)
+                        {
+                            if(j==jmax+2)
+                            {
+                                if(lungime==2)
+                                {
+                                    if((tabla[i1][j1+2]==0)&&(tabla[i2][j2+2]==0))
+                                    {
+                                        tabla[i1][j1+2]=player;
+                                        tabla[i2][j2+2]=player;
+                                        updateCellColor(i1, j1+2);
+                                        updateCellColor(i2, j2+2);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                                if(lungime==3)
+                                {
+                                    if((tabla[i1][j1+2]==0)&&(tabla[i2][j2+2]==0)&&(tabla[i3][j3+2]==0))
+                                    {
+                                        tabla[i1][j1+2]=player;
+                                        tabla[i2][j2+2]=player;
+                                        tabla[i3][j3+2]=player;
+                                        updateCellColor(i1, j1+2);
+                                        updateCellColor(i2, j2+2);
+                                        updateCellColor(i3, j3+2);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        tabla[i3][j3]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        updateCellColor(i3, j3);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                actiuni=0;
+                            }
+                        }
+                        else if(i==imax+1)
+                        {
+                            if(j==jmin-1)
+                            {
+                                if(tabla[imax+1][jmin-1]==0)
+                                {
+                                    tabla[imax+1][jmin-1]=player;
+                                    tabla[imin][jmax]=0;
+                                    updateCellColor(imax+1,jmin-1);
+                                    updateCellColor(imin,jmax);
+                                    actiuni=0;
+                                    aux=player;
+                                    player=playerWaiting;
+                                    playerWaiting=aux;
+                                }
+                                else if(tabla[imax+1][jmin-1]==playerWaiting)
+                                {
+                                    canPush=true;
+                                    index=1;
+                                    while(tabla[imax+(index+1)][jmin-(index+1)]!=0&&tabla[imax+(index+1)][jmin-(index+1)]!=3)
+                                    {
+                                        index++;
+                                        if(tabla[imax+index][jmin-index]==player)
+                                        {
+                                            canPush=false;
+                                            break;
+                                        }
+                                    }
+                                    if(index>=lungime)
+                                    {
+                                        canPush=false;
+                                    }
+                                    if(canPush)
+                                    {
+                                        tabla[imax+1][jmin-1]=player;
+                                        tabla[imin][jmax]=0;
+                                        updateCellColor(imax+1,jmin-1);
+                                        updateCellColor(imin,jmax);
+                                        if(tabla[imax+index+1][jmin-index-1]==0)
+                                        {
+                                            tabla[imax+index+1][jmin-index-1]=playerWaiting;
+                                            updateCellColor(imax+index+1,jmin-index-1);
+                                        }
+                                        else
+                                        {
+                                            if(player==2)
+                                            {
+                                                scorePlayerBlack++;
+                                            }
+                                            else
+                                            {
+                                                scorePlayerWhite++;
+                                            }
+                                        }
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else if(j==jmin+1)
+                            {
+                                if(lungime==2)
+                                {
+                                    if((tabla[i1+1][j1+1]==0)&&(tabla[i2+1][j2+1]==0))
+                                    {
+                                        tabla[i1+1][j1+1]=player;
+                                        tabla[i2+1][j2+1]=player;
+                                        updateCellColor(i1+1, j1+1);
+                                        updateCellColor(i2+1, j2+1);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                                if(lungime==3)
+                                {
+                                    if((tabla[i1+1][j1+1]==0)&&(tabla[i2+1][j2+1]==0)&&(tabla[i3+1][j3+1]==0))
+                                    {
+                                        tabla[i1+1][j1+1]=player;
+                                        tabla[i2+1][j2+1]=player;
+                                        tabla[i3+1][j3+1]=player;
+                                        updateCellColor(i1+1, j1+1);
+                                        updateCellColor(i2+1, j2+1);
+                                        updateCellColor(i3+1, j3+1);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        tabla[i3][j3]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        updateCellColor(i3, j3);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                actiuni=0;
+                            }
+                        }
+                        else if(i==imax)
+                        {
+                            if(j==jmin-2)
+                            {
+                                if(lungime==2)
+                                {
+                                    if((tabla[i1][j1-2]==0)&&(tabla[i2][j2-2]==0))
+                                    {
+                                        tabla[i1][j1-2]=player;
+                                        tabla[i2][j2-2]=player;
+                                        updateCellColor(i1, j1-2);
+                                        updateCellColor(i2, j2-2);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                                if(lungime==3)
+                                {
+                                    if((tabla[i1][j1-2]==0)&&(tabla[i2][j2-2]==0)&&(tabla[i3][j3-2]==0))
+                                    {
+                                        tabla[i1][j1-2]=player;
+                                        tabla[i2][j2-2]=player;
+                                        tabla[i3][j3-2]=player;
+                                        updateCellColor(i1, j1-2);
+                                        updateCellColor(i2, j2-2);
+                                        updateCellColor(i3, j3-2);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        tabla[i3][j3]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        updateCellColor(i3, j3);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                actiuni=0;
+                            }
+                        }
+                        else
+                        {
+                            actiuni=0;
+                        }
+                    }
+                    else if(type==3)
+                    {
+                        if(i==imin-1)
+                        {
+                            if(j==jmin-1)
+                            {
+                                if(tabla[i][j]==0)
+                                {
+                                    tabla[i][j]=player;
+                                    tabla[imax][jmax]=0;
+                                    updateCellColor(i,j);
+                                    updateCellColor(imax,jmax);
+                                    actiuni=0;
+                                    aux=player;
+                                    player=playerWaiting;
+                                    playerWaiting=aux;
+                                }
+                                else if(tabla[i][j]==playerWaiting)
+                                {
+                                    canPush=true;
+                                    index=1;
+                                    while(tabla[imin-(index+1)][jmin-(index+1)]!=0&&tabla[imin-(index+1)][jmin-(index+1)]!=3)
+                                    {
+                                        index++;
+                                        if(tabla[imin-index][jmin-index]==player)
+                                        {
+                                            canPush=false;
+                                            break;
+                                        }
+                                    }
+                                    if(index>=lungime)
+                                    {
+                                        canPush=false;
+                                    }
+                                    if(canPush)
+                                    {
+                                        tabla[imin-1][jmin-1]=player;
+                                        tabla[imax][jmax]=0;
+                                        updateCellColor(imin-1,jmin-1);
+                                        updateCellColor(imax,jmax);
+                                        if(tabla[imin-index-1][jmin-index-1]==0)
+                                        {
+                                            tabla[imin-index-1][jmin-index-1]=playerWaiting;
+                                            updateCellColor(imin-index-1,jmin-index-1);
+                                        }
+                                        else
+                                        {
+                                            if(player==2)
+                                            {
+                                                scorePlayerBlack++;
+                                            }
+                                            else
+                                            {
+                                                scorePlayerWhite++;
+                                            }
+                                        }
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else if(j==jmin+1)
+                            {
+                                if(lungime==2)
+                                {
+                                    if((tabla[i1-1][j1+1]==0)&&(tabla[i2-1][j2+1]==0))
+                                    {
+                                        tabla[i1-1][j1+1]=player;
+                                        tabla[i2-1][j2+1]=player;
+                                        updateCellColor(i1-1, j1+1);
+                                        updateCellColor(i2-1, j2+1);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                                if(lungime==3)
+                                {
+                                    if((tabla[i1-1][j1+1]==0)&&(tabla[i2-1][j2+1]==0)&&(tabla[i3-1][j3+1]==0))
+                                    {
+                                        tabla[i1-1][j1+1]=player;
+                                        tabla[i2-1][j2+1]=player;
+                                        tabla[i3-1][j3+1]=player;
+                                        updateCellColor(i1-1, j1+1);
+                                        updateCellColor(i2-1, j2+1);
+                                        updateCellColor(i3-1,j3+1);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        tabla[i3][j3]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        updateCellColor(i3,j3);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                actiuni=0;
+                            }
+                        }
+                        else if(i==imin)
+                        {
+                            if(j==jmin-2)
+                            {
+                                if(lungime==2)
+                                {
+                                    if((tabla[i1][j1-2]==0)&&(tabla[i2][j2-2]==0))
+                                    {
+                                        tabla[i1][j1-2]=player;
+                                        tabla[i2][j2-2]=player;
+                                        updateCellColor(i1, j1-2);
+                                        updateCellColor(i2, j2-2);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                                if(lungime==3)
+                                {
+                                    if((tabla[i1][j1-2]==0)&&(tabla[i2][j2-2]==0)&&(tabla[i3][j3-2]==0))
+                                    {
+                                        tabla[i1][j1-2]=player;
+                                        tabla[i2][j2-2]=player;
+                                        tabla[i3][j3-2]=player;
+                                        updateCellColor(i1, j1-2);
+                                        updateCellColor(i2, j2-2);
+                                        updateCellColor(i3, j3-2);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        tabla[i3][j3]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        updateCellColor(i3, j3);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                actiuni=0;
+                            }
+                        }
+                        else if(i==imax+1)
+                        {
+                            if(j==jmax+1)
+                            {
+                                if(tabla[imax+1][jmax+1]==0)
+                                {
+                                    tabla[imax+1][jmax+1]=player;
+                                    tabla[imin][jmin]=0;
+                                    updateCellColor(imax+1,jmax+1);
+                                    updateCellColor(imin,jmin);
+                                    actiuni=0;
+                                    aux=player;
+                                    player=playerWaiting;
+                                    playerWaiting=aux;
+                                }
+                                else if(tabla[imax+1][jmax+1]==playerWaiting)
+                                {
+                                    canPush=true;
+                                    index=1;
+                                    while(tabla[imax+(index+1)][jmax+(index+1)]!=0&&tabla[imax+(index+1)][jmax+(index+1)]!=3)
+                                    {
+                                        index++;
+                                        if(tabla[imax+index][jmax+index]==player)
+                                        {
+                                            canPush=false;
+                                            break;
+                                        }
+                                    }
+                                    if(index>=lungime)
+                                    {
+                                        canPush=false;
+                                    }
+                                    if(canPush)
+                                    {
+                                        tabla[imax+1][jmax+1]=player;
+                                        tabla[imin][jmin]=0;
+                                        updateCellColor(imax+1,jmax+1);
+                                        updateCellColor(imin,jmin);
+                                        if(tabla[imax+index+1][jmax+index+1]==0)
+                                        {
+                                            tabla[imax+index+1][jmax+index+1]=playerWaiting;
+                                            updateCellColor(imax+index+1,jmax+index+1);
+                                        }
+                                        else
+                                        {
+                                            if(player==2)
+                                            {
+                                                scorePlayerBlack++;
+                                            }
+                                            else
+                                            {
+                                                scorePlayerWhite++;
+                                            }
+                                        }
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else if(j==jmax-1)
+                            {
+                                if(lungime==2)
+                                {
+                                    if((tabla[i1+1][j1-1]==0)&&(tabla[i2+1][j2-1]==0))
+                                    {
+                                        tabla[i1+1][j1-1]=player;
+                                        tabla[i2+1][j2-1]=player;
+                                        updateCellColor(i1+1, j1-1);
+                                        updateCellColor(i2+1, j2-1);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                                if(lungime==3)
+                                {
+                                    if((tabla[i1+1][j1-1]==0)&&(tabla[i2+1][j2-1]==0)&&(tabla[i3+1][j3-1]==0))
+                                    {
+                                        tabla[i1+1][j1-1]=player;
+                                        tabla[i2+1][j2-1]=player;
+                                        tabla[i3+1][j3-1]=player;
+                                        updateCellColor(i1+1, j1-1);
+                                        updateCellColor(i2+1, j2-1);
+                                        updateCellColor(i3+1, j3-1);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        tabla[i3][j3]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        updateCellColor(i3, j3);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                actiuni=0;
+                            }
+                        }
+                        else if(i==imax)
+                        {
+                            if(j==jmax+2)
+                            {
+                                if(lungime==2)
+                                {
+                                    if((tabla[i1][j1+2]==0)&&(tabla[i2][j2+2]==0))
+                                    {
+                                        tabla[i1][j1+2]=player;
+                                        tabla[i2][j2+2]=player;
+                                        updateCellColor(i1, j1+2);
+                                        updateCellColor(i2, j2+2);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                                if(lungime==3)
+                                {
+                                    if((tabla[i1][j1+2]==0)&&(tabla[i2][j2+2]==0)&&(tabla[i3][j3+2]==0))
+                                    {
+                                        tabla[i1][j1+2]=player;
+                                        tabla[i2][j2+2]=player;
+                                        tabla[i3][j3+2]=player;
+                                        updateCellColor(i1, j1+2);
+                                        updateCellColor(i2, j2+2);
+                                        updateCellColor(i3, j3+2);
+                                        tabla[i1][j1]=0;
+                                        tabla[i2][j2]=0;
+                                        tabla[i3][j3]=0;
+                                        updateCellColor(i1, j1);
+                                        updateCellColor(i2, j2);
+                                        updateCellColor(i3, j3);
+                                        actiuni=0;
+                                        aux=player;
+                                        player=playerWaiting;
+                                        playerWaiting=aux;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                actiuni=0;
                             }
                         }
                         else

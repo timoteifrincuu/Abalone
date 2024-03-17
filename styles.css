@@ -18,4 +18,6 @@
     border-radius: 50%;
     border: none;
 }
-.dark-grey {background-color: rgb(80, 80, 80);}
+.dark-grey {
+    background-color: rgb(80, 80, 80);
+}
