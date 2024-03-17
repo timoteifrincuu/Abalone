@@ -439,10 +439,18 @@ for (let i = 0; i < tabla.length; i++) {
                                             if(player==2)
                                             {
                                                 scorePlayerBlack++;
+                                                if(scorePlayerBlack==6)
+                                                {
+                                                    alert("Player Black Wins!");
+                                                }
                                             }
                                             else
                                             {
                                                 scorePlayerWhite++;
+                                                if(scorePlayerWhite==6)
+                                                {
+                                                    alert("Player White Wins!");
+                                                }
                                             }
                                         }
                                         actiuni=0;
@@ -498,10 +506,18 @@ for (let i = 0; i < tabla.length; i++) {
                                             if(player==2)
                                             {
                                                 scorePlayerBlack++;
+                                                if(scorePlayerBlack==6)
+                                                {
+                                                    alert("Player Black Wins!");
+                                                }
                                             }
                                             else
                                             {
                                                 scorePlayerWhite++;
+                                                if(scorePlayerWhite==6)
+                                                {
+                                                    alert("Player White Wins!");
+                                                }
                                             }
                                         }
                                         actiuni=0;
@@ -568,10 +584,18 @@ for (let i = 0; i < tabla.length; i++) {
                                             if(player==2)
                                             {
                                                 scorePlayerBlack++;
+                                                if(scorePlayerBlack==6)
+                                                {
+                                                    alert("Player Black Wins!");
+                                                }
                                             }
                                             else
                                             {
                                                 scorePlayerWhite++;
+                                                if(scorePlayerWhite==6)
+                                                {
+                                                    alert("Player White Wins!");
+                                                }
                                             }
                                         }
                                         actiuni=0;
@@ -727,10 +751,18 @@ for (let i = 0; i < tabla.length; i++) {
                                             if(player==2)
                                             {
                                                 scorePlayerBlack++;
+                                                if(scorePlayerBlack==6)
+                                                {
+                                                    alert("Player Black Wins!");
+                                                }
                                             }
                                             else
                                             {
                                                 scorePlayerWhite++;
+                                                if(scorePlayerWhite==6)
+                                                {
+                                                    alert("Player White Wins!");
+                                                }
                                             }
                                         }
                                         actiuni=0;
@@ -893,10 +925,18 @@ for (let i = 0; i < tabla.length; i++) {
                                             if(player==2)
                                             {
                                                 scorePlayerBlack++;
+                                                if(scorePlayerBlack==6)
+                                                {
+                                                    alert("Player Black Wins!");
+                                                }
                                             }
                                             else
                                             {
                                                 scorePlayerWhite++;
+                                                if(scorePlayerWhite==6)
+                                                {
+                                                    alert("Player White Wins!");
+                                                }
                                             }
                                         }
                                         actiuni=0;
@@ -1052,10 +1092,18 @@ for (let i = 0; i < tabla.length; i++) {
                                             if(player==2)
                                             {
                                                 scorePlayerBlack++;
+                                                if(scorePlayerBlack==6)
+                                                {
+                                                    alert("Player Black Wins!");
+                                                }
                                             }
                                             else
                                             {
                                                 scorePlayerWhite++;
+                                                if(scorePlayerWhite==6)
+                                                {
+                                                    alert("Player White Wins!");
+                                                }
                                             }
                                         }
                                         actiuni=0;
